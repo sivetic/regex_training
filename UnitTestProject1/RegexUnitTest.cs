@@ -15,7 +15,7 @@ namespace UnitTestProject1
         public void Test_MatchRegexLiteral(String input, bool isMatch)
         {
             // Match the word "regex"
-            string pattern = "";
+            string pattern = "regex";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -36,7 +36,7 @@ namespace UnitTestProject1
         public void Test_MatchIsVowel(String input, bool isMatch) 
         {
             // Match if input is a single vowel character
-            string pattern = "";
+            string pattern = @"\b[aeiou]\b";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -51,7 +51,7 @@ namespace UnitTestProject1
         public void Test_MatchOnlyNumbers(String input, bool isMatch)
         {
             // Match if string only contains numbers
-            string pattern = "";
+            string pattern = @"^[0-9]+$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -63,7 +63,7 @@ namespace UnitTestProject1
         public void Test_MatchStringNoNumbers(String input, bool isMatch)
         {
             // Match if string contains no numbers
-            string pattern = "";
+            string pattern = @"^\D+$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -77,7 +77,7 @@ namespace UnitTestProject1
         public void Test_MatchTXTExtension(String input, bool isMatch) 
         {
             // Match files ending with ".txt" extension
-            string pattern = "";
+            string pattern = @"\.txt$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -92,7 +92,7 @@ namespace UnitTestProject1
         {
             // Match if string starts with valid HTTP verb, including
             // GET, PUT, POST, or DELETE
-            string pattern = "";
+            string pattern = @"^GET|PUT|POST|DELETE";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -110,7 +110,7 @@ namespace UnitTestProject1
         public void Test_Match1To99(String input, bool isMatch)
         {
             // Match numbers 1-99
-            string pattern = "";
+            string pattern = @"^[1-9][0-9]?$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -126,7 +126,7 @@ namespace UnitTestProject1
         {
             // Match a VISA credit card number:
             // Must start with a 4, and be 16 digits.  Matches numbers with or without dashes.
-            string pattern = "";
+            string pattern = @"";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -152,7 +152,7 @@ namespace UnitTestProject1
             //  MINOR: 1 or 2 digits (0-99)
             //  REVISION: 1-3 digits (0-999)
             // MINOR and REVISION are optional
-            string pattern = "";
+            string pattern = @"";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -167,7 +167,7 @@ namespace UnitTestProject1
         public void Test_StartsWith(String input, bool isMatch)
         {
             // Match string starts with "/users/"
-            string pattern = "";
+            string pattern = @"^\/users\/";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -232,7 +232,7 @@ namespace UnitTestProject1
             // Match valid username:
             // Can only contain letters, numbers, dash (-), or underscore (_)
             // Must be >=3 and <=10 characters long
-            string pattern = "";
+            string pattern = @"";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
