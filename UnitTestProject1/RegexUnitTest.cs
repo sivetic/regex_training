@@ -51,7 +51,7 @@ namespace UnitTestProject1
         public void Test_MatchOnlyNumbers(String input, bool isMatch)
         {
             // Match if string only contains numbers
-            string pattern = @"^1(\d+)?$";
+            string pattern = @"\d+$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -63,7 +63,7 @@ namespace UnitTestProject1
         public void Test_MatchStringNoNumbers(String input, bool isMatch)
         {
             // Match if string contains no numbers
-            string pattern = @"^[\s\D]+$";
+            string pattern = @"^\D+$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
