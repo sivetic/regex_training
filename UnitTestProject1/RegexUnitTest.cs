@@ -15,7 +15,7 @@ namespace UnitTestProject1
         public void Test_MatchRegexLiteral(String input, bool isMatch)
         {
             // Match the word "regex"
-            string pattern = "";
+            string pattern = "regex";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
