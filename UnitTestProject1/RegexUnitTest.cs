@@ -15,7 +15,7 @@ namespace UnitTestProject1
         public void Test_MatchRegexLiteral(String input, bool isMatch)
         {
             // Match the word "regex"
-            string pattern = "";
+            string pattern = "regex";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -36,7 +36,7 @@ namespace UnitTestProject1
         public void Test_MatchIsVowel(String input, bool isMatch) 
         {
             // Match if input is a single vowel character
-            string pattern = "";
+            string pattern = "^[a|e|i|o|u]$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -51,7 +51,7 @@ namespace UnitTestProject1
         public void Test_MatchOnlyNumbers(String input, bool isMatch)
         {
             // Match if string only contains numbers
-            string pattern = "";
+            string pattern = @"^\d+$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -63,7 +63,7 @@ namespace UnitTestProject1
         public void Test_MatchStringNoNumbers(String input, bool isMatch)
         {
             // Match if string contains no numbers
-            string pattern = "";
+            string pattern = @"^\D*$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -77,7 +77,7 @@ namespace UnitTestProject1
         public void Test_MatchTXTExtension(String input, bool isMatch) 
         {
             // Match files ending with ".txt" extension
-            string pattern = "";
+            string pattern = @"\.(txt)\Z";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -92,7 +92,7 @@ namespace UnitTestProject1
         {
             // Match if string starts with valid HTTP verb, including
             // GET, PUT, POST, or DELETE
-            string pattern = "";
+            string pattern = @"\A(GET |PUT|POST|DELETE)";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -110,7 +110,7 @@ namespace UnitTestProject1
         public void Test_Match1To99(String input, bool isMatch)
         {
             // Match numbers 1-99
-            string pattern = "";
+            string pattern = @"^[1-9]\d{0,1}$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -126,7 +126,7 @@ namespace UnitTestProject1
         {
             // Match a VISA credit card number:
             // Must start with a 4, and be 16 digits.  Matches numbers with or without dashes.
-            string pattern = "";
+            string pattern = @"\A(4)\d{3}\-*\d{4}\-*\d{4}\-*\d{4}$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -152,7 +152,7 @@ namespace UnitTestProject1
             //  MINOR: 1 or 2 digits (0-99)
             //  REVISION: 1-3 digits (0-999)
             // MINOR and REVISION are optional
-            string pattern = "";
+            string pattern = @"^[0-9]*?\.?\d{0,2}\.?\d{0,3}[^.]$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -167,7 +167,7 @@ namespace UnitTestProject1
         public void Test_StartsWith(String input, bool isMatch)
         {
             // Match string starts with "/users/"
-            string pattern = "";
+            string pattern = @"^\/(users)\/\w";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -185,7 +185,7 @@ namespace UnitTestProject1
         public void Test_StartsAndEndsWith(String input, bool isMatch)
         {
             // Match a sentence starts with a capital letter and ends with punctionation (".", "?", or "!")
-            string pattern = "";
+            string pattern = @"\A[A-Z].*(\.|\!|\?)\Z";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -197,7 +197,7 @@ namespace UnitTestProject1
         public void Test_MatchEmptyString(String input, bool isMatch)
         {
             // Match a 0-length string
-            string pattern = "";
+            string pattern = @"^$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -210,7 +210,7 @@ namespace UnitTestProject1
         public void Test_MatchBlankString(String input, bool isMatch)
         {
             // Match an empty string, or a string only containing spaces
-            string pattern = "";
+            string pattern = @"^\s*$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -232,7 +232,7 @@ namespace UnitTestProject1
             // Match valid username:
             // Can only contain letters, numbers, dash (-), or underscore (_)
             // Must be >=3 and <=10 characters long
-            string pattern = "";
+            string pattern =@"^[A-Za-z0-9_-]{3,10}$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -247,7 +247,7 @@ namespace UnitTestProject1
         public void Test_MatchInteger(String input, bool isMatch)
         {
             // Match any positive or negative integer
-            string pattern = "";
+            string pattern = @"^[\-*0-9]\d{0,}$";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -264,7 +264,7 @@ namespace UnitTestProject1
         public void Test_MatchHexadecimalAnywhereInString(String input, bool isMatch)
         {
             // Match a 6-digit hexadecimal number anywhere in string.  Can optionally start with "#"
-            string pattern = "";
+            string pattern = @"(color:)?[\s*#*A-Fa-f0-9]{6}";
             Assert.AreEqual(Regex.IsMatch(input, pattern), isMatch);
         }
 
@@ -275,7 +275,7 @@ namespace UnitTestProject1
         public void Test_PositiveLookahead(String input, String match)
         {
             // Match a group where units are "em".  Only return value, not the units.
-            string pattern = "";
+            string pattern = @"\d+(?=em)";
             MatchCollection matches = Regex.Matches(input, pattern);
             Assert.AreEqual(matches[0].Value, match);
         }
@@ -287,7 +287,7 @@ namespace UnitTestProject1
         public void Test_NegativeLookahead(String input, String value1, String value2)
         {
             // Match a group where units are not "px".  Only return values, not the units.
-            string pattern = "";
+            string pattern = @"\d+(?!px)";
             MatchCollection matches = Regex.Matches(input, pattern);
             Assert.AreEqual(matches[0].Value, value1);
             Assert.AreEqual(matches[1].Value, value2);
